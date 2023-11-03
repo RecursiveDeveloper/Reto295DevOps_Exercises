@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 if [[ $(whoami) == "root" ]]; 
 then     
     ./Check_packages.sh
