@@ -1,26 +1,31 @@
+#!/bin/bash
+
 function install_git {
-    sudo apt update -y
-    sudo apt install git -y
+    echo -e "\n------------- Installing git\n"
+    apt install git -y
 }
 
 function install_apache {
-    sudo apt update -y
-    sudo apt install apache2 -y
-    sudo ufw allow in "Apache"
-    sudo ufw status
+    echo -e "\n------------- Installing apache\n"
+    apt install apache2 -y
+    ufw allow in "Apache"
+    ufw status
 }
 
 function install_mysql {
-    sudo apt update -y
-    sudo apt install mysql-server -y
+    echo -e "\n------------- Installing mysql\n"
+    apt install mysql-server -y
 }
 
 function install_php {
-    sudo apt install php libapache2-mod-php php-mysql -y
+    echo -e "\n------------- Installing php\n"
+    apt install php libapache2-mod-php php-mysql -y
     php -v
 }
 
 function check_packages {
+    apt update -y
+
     dpkg -s "git" &> /dev/null
     if [[ $? == 1 ]]; then
         install_git
@@ -46,7 +51,7 @@ function check_packages {
     if [[ $? == 1 ]]; then
         install_php
     else
-        echo "php is already installed"
+        echo "Php is already installed"
     fi
 }
 
