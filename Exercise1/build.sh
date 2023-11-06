@@ -27,7 +27,7 @@ function copy_php_files {
 function config_apache_documents {
     local apache_config_file="/etc/apache2/mods-enabled/dir.conf"
 
-    chown -R $USER:$USER /var/www/html/
+    chown -R $USER:$USER /var/www/
     mv $apache_path/index.html $apache_path/index_default.html
 
 cat << EOF > $apache_config_file

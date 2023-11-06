@@ -11,6 +11,9 @@ function install_apache {
     apt install apache2 -y
     ufw allow in "Apache"
     ufw status
+    systemctl start apache2 
+    systemctl enable apache2 
+    systemctl status apache2 
     echo -e "\n$(curl -f -I http://localhost:80)\n"
 }
 
@@ -18,12 +21,14 @@ function install_mariadb {
     echo -e "\n------------- Installing mariadb\n"
     apt install mariadb-server -y
     systemctl start mariadb.service
+    systemctl enable mariadb
+    systemctl status mariadb
     echo -e "\n$(systemctl status mariadb)\n"
 }
 
 function install_php {
     echo -e "\n------------- Installing php\n"
-    apt install php libapache2-mod-php php-mysql -y
+    apt install php libapache2-mod-php php-mysql php-mbstring php-zip php-gd php-json php-curl -y
     echo -e "\n$(php -v)\n"
 }
 

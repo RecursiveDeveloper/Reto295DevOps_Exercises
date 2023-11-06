@@ -22,7 +22,7 @@ function remove_php {
     echo -e "\n------------- Uninstalling php\n"
     apt remove php libapache2-mod-php php-mysql -y
     apt purge php libapache2-mod-php php-mysql -y
-    rm -rf var/www/html/*
+    rm -rf /var/www/html/*
 }
 
 function destroy_init_stage {
