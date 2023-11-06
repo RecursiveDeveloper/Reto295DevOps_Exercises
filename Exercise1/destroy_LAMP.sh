@@ -12,16 +12,17 @@ function remove_apache {
     apt purge apache2 -y
 }
 
-function remove_mysql {
-    echo -e "\n------------- Uninstalling mysql\n"
-    apt remove mysql-server -y
-    apt purge mysql-server -y
+function remove_mariadb {
+    echo -e "\n------------- Uninstalling mariadb\n"
+    apt remove mariadb-server -y
+    apt purge mariadb-server -y
 }
 
 function remove_php {
     echo -e "\n------------- Uninstalling php\n"
     apt remove php libapache2-mod-php php-mysql -y
     apt purge php libapache2-mod-php php-mysql -y
+    rm -rf var/www/html/*
 }
 
 function destroy_init_stage {
@@ -39,11 +40,11 @@ function destroy_init_stage {
         echo "Apache is already uninstalled"
     fi
 
-    dpkg -s "mysql-server" &> /dev/null
+    dpkg -s "mariadb-server" &> /dev/null
     if [[ $? == 0 ]]; then
-        remove_mysql
+        remove_mariadb
     else
-        echo "MySQL is already uninstalled"
+        echo "MariaDB is already uninstalled"
     fi
 
     dpkg -s "php" "libapache2-mod-php" "php-mysql" &> /dev/null

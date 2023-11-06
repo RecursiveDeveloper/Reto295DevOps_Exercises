@@ -14,10 +14,11 @@ function install_apache {
     echo -e "\n$(curl -f -I http://localhost:80)\n"
 }
 
-function install_mysql {
-    echo -e "\n------------- Installing mysql\n"
-    apt install mysql-server -y
-    echo -e "\n$(mysql -V)\n"
+function install_mariadb {
+    echo -e "\n------------- Installing mariadb\n"
+    apt install mariadb-server -y
+    systemctl start mariadb.service
+    echo -e "\n$(systemctl status mariadb)\n"
 }
 
 function install_php {
@@ -43,11 +44,11 @@ function check_packages {
         echo "Apache is already installed"
     fi
 
-    dpkg -s "mysql-server" &> /dev/null
+    dpkg -s "mariadb-server" &> /dev/null
     if [[ $? == 1 ]]; then
-        install_mysql
+        install_mariadb
     else
-        echo "MySQL is already installed"
+        echo "MariaDB is already installed"
     fi
 
     dpkg -s "php" "libapache2-mod-php" "php-mysql" &> /dev/null
