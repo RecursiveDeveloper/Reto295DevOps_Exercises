@@ -2,27 +2,24 @@
 
 function remove_git {
     echo -e "\n------------- Uninstalling git\n"
-    apt remove git -y
-    apt purge git -y
+    apt remove --purge git -y
 }
 
 function remove_apache {
     echo -e "\n------------- Uninstalling apache\n"
-    apt remove apache2 -y
-    apt purge apache2 -y
+    apt remove --purge apache2 -y
 }
 
 function remove_mariadb {
     echo -e "\n------------- Uninstalling mariadb\n"
-    apt remove mariadb-server -y
-    apt purge mariadb-server -y
+    rm -rf /var/lib/mysql
+    apt remove --purge mariadb-* -y
 }
 
 function remove_php {
     echo -e "\n------------- Uninstalling php\n"
-    apt remove php libapache2-mod-php php-mysql -y
-    apt purge php libapache2-mod-php php-mysql -y
     rm -rf /var/www/html/*
+    apt remove --purge php libapache2-mod-php php-mysql -y
 }
 
 function destroy_init_stage {

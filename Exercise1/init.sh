@@ -22,7 +22,6 @@ function install_mariadb {
     apt install mariadb-server -y
     systemctl start mariadb.service
     systemctl enable mariadb
-    systemctl status mariadb
     echo -e "\n$(systemctl status mariadb)\n"
 }
 
