@@ -46,7 +46,7 @@ function check_packages {
         install_apache
     fi
 
-    if dpkg -s "mariadb*" > /dev/null 2>&1; then 
+    if dpkg -s "mariadb-server" > /dev/null 2>&1; then 
         echo "MariaDB is already installed";
     else
         install_mariadb

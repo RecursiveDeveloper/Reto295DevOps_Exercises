@@ -7,6 +7,9 @@ then
 
     echo -e "\nSTAGE 2: [Build]\n"
     ./build-up/build.sh
+
+    echo -e "\nSTAGE 3: [Deploy]\n"
+    ./build-up/db_config.sh
 else
     echo "Root user is needed for execution ....."
 fi
