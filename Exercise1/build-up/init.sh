@@ -2,13 +2,13 @@
 
 function install_git {
     echo -e "\n------------- Installing git\n"
-    apt install git -y
+    apt -y install git 
     echo -e "\n$(git --version)\n"
 }
 
 function install_apache {
     echo -e "\n------------- Installing apache\n"
-    apt install apache2 -y
+    apt install -y apache2 
     ufw allow in "Apache"
     ufw status
     systemctl start apache2 
@@ -19,7 +19,7 @@ function install_apache {
 
 function install_mariadb {
     echo -e "\n------------- Installing mariadb\n"
-    apt install mariadb-server -y
+    apt -y install mariadb-server 
     systemctl start mariadb.service
     systemctl enable mariadb
     echo -e "\n$(systemctl status mariadb)\n"
@@ -27,39 +27,35 @@ function install_mariadb {
 
 function install_php {
     echo -e "\n------------- Installing php\n"
-    apt install php libapache2-mod-php php-mysql php-mbstring php-zip php-gd php-json php-curl -y
+    apt install -y php libapache2-mod-php php-mysql php-mbstring php-zip php-gd php-json php-curl 
     echo -e "\n$(php -v)\n"
 }
 
 function check_packages {
     apt update -y
 
-    dpkg -s "git" &> /dev/null
-    if [[ $? == 1 ]]; then
-        install_git
-    else
+    if dpkg -s "git" > /dev/null 2>&1; then 
         echo "Git is already installed"
+    else
+        install_git
     fi
 
-    dpkg -s "apache2" &> /dev/null
-    if [[ $? == 1 ]]; then
-        install_apache
-    else
+    if dpkg -s "apache2" > /dev/null 2>&1; then 
         echo "Apache is already installed"
+    else
+        install_apache
     fi
 
-    dpkg -s "mariadb-server" &> /dev/null
-    if [[ $? == 1 ]]; then
+    if dpkg -s "mariadb*" > /dev/null 2>&1; then 
+        echo "MariaDB is already installed";
+    else
         install_mariadb
-    else
-        echo "MariaDB is already installed"
     fi
 
-    dpkg -s "php" "libapache2-mod-php" "php-mysql" &> /dev/null
-    if [[ $? == 1 ]]; then
-        install_php
-    else
+    if dpkg -s "php" "libapache2-mod-php" "php-mysql" "php-mbstring" "php-zip" "php-gd" "php-json" "php-curl" > /dev/null 2>&1; then
         echo "Php is already installed"
+    else
+        install_php
     fi
 }
 

@@ -28,7 +28,10 @@ function config_apache_documents {
     local apache_config_file="/etc/apache2/mods-enabled/dir.conf"
 
     chown -R $USER:$USER /var/www/
-    mv $apache_path/index.html $apache_path/index_default.html
+
+    if test -f "$apache_path/index.html"; then
+        mv $apache_path/index.html $apache_path/index_default.html
+    fi
 
 cat << EOF > $apache_config_file
 <IfModule mod_dir.c>
