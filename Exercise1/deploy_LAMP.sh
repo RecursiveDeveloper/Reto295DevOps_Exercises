@@ -11,8 +11,8 @@ then
         echo -e "\nSTAGE 2: [Build]\n"
         ./build-up/config_static_files.sh
 
-        . ./build-up/config_database.sh; replace_passwords
         . ./build-up/config_database.sh; import_sql_script
+        . ./build-up/config_database.sh; replace_passwords
     fi
 
     if [[ $3 -eq 1 ]]; then

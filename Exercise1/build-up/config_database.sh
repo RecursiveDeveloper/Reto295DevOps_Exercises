@@ -1,12 +1,10 @@
 #!/bin/bash
 
-password="codepass"
-
 function provision_db {
     echo -e "\nProvisioning Database .....\n"
     mysql -e "
     CREATE DATABASE IF NOT EXISTS devopstravel;
-    CREATE USER IF NOT EXISTS 'codeuser'@'localhost' IDENTIFIED BY '${password}';
+    CREATE USER IF NOT EXISTS 'codeuser'@'localhost' IDENTIFIED BY 'codepass';
     GRANT ALL PRIVILEGES ON *.* TO 'codeuser'@'localhost';
     FLUSH PRIVILEGES;
     
@@ -16,7 +14,7 @@ function provision_db {
 function replace_passwords {
     echo -e "\nReplacing Database password .....\n"
     sed -i 's/""/"codepass"/g' /var/www/html/config.php
-
+    systemctl reload apache2
     cat /var/www/html/config.php
 }
 
@@ -30,6 +28,4 @@ function import_sql_script {
     USE devopstravel;
     SHOW TABLES;
     "
-
-    systemctl reload apache2
 }
