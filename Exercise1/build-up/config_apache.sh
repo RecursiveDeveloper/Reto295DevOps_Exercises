@@ -5,6 +5,8 @@ function config_apache_documents {
     local apache_path="/var/www/html"
     local apache_config_file="/etc/apache2/mods-enabled/dir.conf"
     
+    chown -R $USER:$USER /var/www/
+
     if test -f "$apache_path/index.html"; then
         mv $apache_path/index.html $apache_path/index.html.bkp
     fi

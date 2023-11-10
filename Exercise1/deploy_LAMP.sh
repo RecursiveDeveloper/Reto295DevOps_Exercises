@@ -13,7 +13,15 @@ then
 
     echo -e "\nSTAGE 3: [Deploy]\n"
     systemctl reload apache2
-    curl -I localhost
+
+    WEB_URL="localhost"
+    HTTP_STATUS=$(curl -Is "$WEB_URL" | head -n 1)
+
+    if [[ "$HTTP_STATUS" == *"200"* ]]; then
+        echo -e "\nLa página web http://$WEB_URL está en línea.\n"
+    else
+        echo -e "\nLa página web http://$WEB_URL no está en línea.\n"
+    fi
 
     echo -e "\nSTAGE 4: [Notify]\n"
     . ./notify/discord.sh ./../../Reto295DevOps_Exercises/    
