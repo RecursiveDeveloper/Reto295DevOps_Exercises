@@ -7,8 +7,8 @@ function provision_db {
     CREATE USER IF NOT EXISTS 'codeuser'@'localhost' IDENTIFIED BY 'codepass';
     GRANT ALL PRIVILEGES ON *.* TO 'codeuser'@'localhost';
     FLUSH PRIVILEGES;
-    
-    SHOW DATABASES;"
+    SHOW DATABASES;
+    "
 }
 
 function replace_passwords {

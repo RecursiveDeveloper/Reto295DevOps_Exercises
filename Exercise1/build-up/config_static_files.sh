@@ -1,7 +1,5 @@
 #!/bin/bash
 
-apache_path="/var/www/html"
-
 function check_repo {
     local repo_name="bootcamp-devops-2023"
     local repo_url="https://github.com/roxsross/bootcamp-devops-2023.git"
@@ -21,7 +19,10 @@ function check_repo {
 }
 
 function copy_php_files {
+    local apache_path="/var/www/html"
+    
     cp -Rf app-295devops-travel/* $apache_path
+    systemctl reload apache2
 }
 
 check_repo

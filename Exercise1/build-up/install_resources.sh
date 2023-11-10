@@ -13,10 +13,9 @@ function install_apache {
     ufw status
     systemctl start apache2 
     systemctl enable apache2 
-    systemctl status apache2 
     echo -e "\n$(curl -f -I http://localhost:80)\n"
  
-    . ./build-up/config_resources.sh; config_apache_documents
+    . ./build-up/config_apache.sh; config_apache_documents
 }
 
 function install_mariadb {
@@ -24,9 +23,9 @@ function install_mariadb {
     apt -y install mariadb-server 
     systemctl start mariadb.service
     systemctl enable mariadb
-    echo -e "\n$(systemctl status mariadb)\n"
+    echo -e "\n$(mariadb -V)\n"
 
-    . ./build-up/config_database.sh; provision_db
+    . ./build-up/config_mariadb.sh; provision_db
 }
 
 function install_php {
