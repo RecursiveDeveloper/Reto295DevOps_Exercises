@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Configura el token de acceso de tu bot de Discord
-DISCORD="https://discord.com/channels/994739593729556570/1167825607573377054"
+DISCORD="https://discord.com/api/webhooks/1169002249939329156/7MOorDwzym-yBUs3gp0k5q7HyA42M5eYjfjpZgEwmAx1vVVcLgnlSh4TmtqZqCtbupov"
 
 # Verifica si se proporcionó el argumento del directorio del repositorio
 if [ $# -ne 1 ]; then
@@ -39,6 +39,6 @@ MESSAGE="$DEPLOYMENT_INFO2\n$DEPLOYMENT_INFO\n$COMMIT\n$AUTHOR\n$REPO_URL\n$DESC
 echo $MESSAGE
 # Envía el mensaje a Discord utilizando la API de Discord
 curl -X POST -H "Content-Type: application/json" \
-  -d '{
-    "content": "'"${MESSAGE}"'"
-  }' "$DISCORD"
+     -d '{
+       "content": "'"${MESSAGE}"'"
+     }' "$DISCORD"
