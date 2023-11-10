@@ -7,6 +7,14 @@ Deploy a [LAMP](https://aws.amazon.com/what-is/lamp-stack/?nc1=h_ls) stack using
 ![image](https://lidsol.org/post/vagrant/featured.png)
 * [Vagrant installation](https://developer.hashicorp.com/vagrant/docs/installation)
 
+![image](https://miro.medium.com/v2/resize:fit:625/1*qcaAS9jLbQlHUYfe0megwQ.png)
+* [Virtual Box installation](https://adamtheautomator.com/install-virtualbox-on-windows-10/)
+
+![image](https://icon-library.com/images/vmware-icon/vmware-icon-18.jpg)
+* [VmWare installation](https://www.educba.com/install-vmware/)
+
+#### Note: if using Vagrant. Just need to install one of the previous tools for virtualizing
+
 ## Usage
 
 Use Vagrant to deploy a LAMP stack with just few commands. If you want to check and learn more about Vagrant functionalities take a look at [Vagrant Documentation](https://developer.hashicorp.com/vagrant/docs) and [Vagrant cheat sheet](https://gist.github.com/wpscholar/a49594e2e2b918f4d0c4)
