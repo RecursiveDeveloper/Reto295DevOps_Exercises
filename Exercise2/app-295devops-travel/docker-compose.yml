@@ -1,0 +1,29 @@
+version: "3.8"
+services:
+  apachephp:
+    build:
+      context: ./webapp
+    image: apachephp
+    container_name: apachephp
+    depends_on:
+      - mariadb
+    networks:
+      - app-295-devops-travel
+    ports:
+      - 8080:80
+    
+  mariadb:
+    build:
+      context: ./database
+    image: mariadb
+    container_name: mariadb
+    environment:
+      - MARIADB_ROOT_PASSWORD=root123
+    networks:
+      - app-295-devops-travel
+    ports:
+      - 3306
+
+networks:
+  app-295-devops-travel:
+    driver: bridge
