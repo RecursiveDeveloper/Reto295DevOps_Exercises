@@ -1,4 +1,4 @@
-FROM mariadb:latest
+FROM mariadb:10.6.16-focal
 
 ARG sql_files_path="sql_scripts"
 
