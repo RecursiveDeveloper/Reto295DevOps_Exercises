@@ -2,7 +2,7 @@ FROM php:apache
 
 ARG apache_path="/var/www/html"
 ARG apache_config_file="/etc/apache2/mods-enabled/dir.conf"
-ARG static_repo_files_path="./../bootcamp-devops-2023/app-295devops-travel"
+ARG static_repo_files_path="./bootcamp-devops-2023/app-295devops-travel"
 
 WORKDIR "/home"
 
