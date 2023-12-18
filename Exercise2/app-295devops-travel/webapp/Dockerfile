@@ -2,10 +2,11 @@ FROM php:apache
 
 ARG apache_path="/var/www/html"
 ARG apache_config_file="/etc/apache2/mods-enabled/dir.conf"
+ARG static_repo_files_path="./../bootcamp-devops-2023/app-295devops-travel"
 
 WORKDIR "/home"
 
-COPY "static-files/." "${apache_path}"
+COPY "${static_repo_files_path}/." "${apache_path}"
 
 RUN chown -R "$USER":"$USER" "${apache_path}"
 

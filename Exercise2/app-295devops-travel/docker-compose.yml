@@ -5,12 +5,12 @@ services:
       context: ./webapp
     image: apachephp
     container_name: apachephp
-    depends_on:
-      - mariadb
     networks:
       - app-295-devops-travel
     ports:
       - 8080:80
+    depends_on:
+      - mariadb
     
   mariadb:
     build:
@@ -21,8 +21,6 @@ services:
       - MARIADB_ROOT_PASSWORD=root123
     networks:
       - app-295-devops-travel
-    ports:
-      - 3306
 
 networks:
   app-295-devops-travel:
