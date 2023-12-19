@@ -1,5 +1,5 @@
 # Reto295DevOps_Exercises
-![image](https://d11jah725t2vm2.cloudfront.net/geek/lamp-stack-1650018927647.jpg)
+![image](https://phoenixweb.com.au/wp-content/uploads/2016/11/LAMP-Stack-logo.png)
 
 Deploy a [LAMP](https://aws.amazon.com/what-is/lamp-stack/?nc1=h_ls) stack using [Vagrant](https://www.vagrantup.com/) as your virtual machine manager. [MySQL](https://www.mysql.com/) is replaced by [MariaDB](https://mariadb.org/)
 
