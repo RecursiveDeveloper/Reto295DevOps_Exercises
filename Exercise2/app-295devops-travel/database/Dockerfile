@@ -4,5 +4,4 @@ ARG sql_repo_file_path="./bootcamp-devops-2023/app-295devops-travel/database/dev
 
 WORKDIR "/home"
 
-COPY "database/01-provision.sql" "/docker-entrypoint-initdb.d/"
 COPY "${sql_repo_file_path}" "/docker-entrypoint-initdb.d/"

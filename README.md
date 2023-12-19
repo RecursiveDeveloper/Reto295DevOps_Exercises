@@ -1,5 +1,5 @@
 # Reto295DevOps_Exercises
-![image](https://www.emizentech.com/blog/wp-content/uploads/sites/2/2022/06/LAMP-Stack-.jpg)
+![image](https://d11jah725t2vm2.cloudfront.net/geek/lamp-stack-1650018927647.jpg)
 
 Deploy a [LAMP](https://aws.amazon.com/what-is/lamp-stack/?nc1=h_ls) stack using [Vagrant](https://www.vagrantup.com/) as your virtual machine manager. [MySQL](https://www.mysql.com/) is replaced by [MariaDB](https://mariadb.org/)
 
