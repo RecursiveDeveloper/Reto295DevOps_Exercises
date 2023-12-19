@@ -15,9 +15,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "shell", path: "docker_engine.sh", run: "always"
   config.vm.provision "shell", inline: <<-SHELL
-    Repo_Url="https://github.com/RecursiveDeveloper/Reto295DevOps_Exercises.git"
-
-    git clone $Repo_Url
+    git clone "https://github.com/RecursiveDeveloper/Reto295DevOps_Exercises.git"
     cd Reto295DevOps_Exercises
     git pull origin main
     chmod -R +x ./Exercise2

@@ -4,6 +4,9 @@ services:
     build:
       context: .
       dockerfile: ./webapp/Dockerfile
+      args:
+        - MARIADB_PASSWORD=${MARIADB_PASSWORD}
+        - DB_HOST=${DB_HOST}
     image: apachephp
     container_name: apachephp
     networks:
@@ -20,10 +23,10 @@ services:
     image: mariadb
     container_name: mariadb
     environment:
-      - MARIADB_USER=codeuser
-      - MARIADB_PASSWORD=codepass
-      - MARIADB_DATABASE=devopstravel
-      - MARIADB_ROOT_PASSWORD=root123
+      - MARIADB_USER=${MARIADB_USER}
+      - MARIADB_PASSWORD=${MARIADB_PASSWORD}
+      - MARIADB_DATABASE=${MARIADB_DATABASE}
+      - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
     networks:
       - app-295-devops-travel
 

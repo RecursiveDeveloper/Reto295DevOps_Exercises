@@ -1,6 +1,8 @@
 FROM php:8.3.0-apache
 
 ARG static_repo_files_path="./bootcamp-devops-2023/app-295devops-travel"
+ARG MARIADB_PASSWORD
+ARG DB_HOST
 
 WORKDIR "/home"
 
@@ -9,8 +11,8 @@ COPY "${static_repo_files_path}/." "/var/www/html"
 RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 
 RUN <<EOF
-    sed -i 's/"localhost"/"mariadb"/g' /var/www/html/config.php
-    sed -i 's/""/"codepass"/g' /var/www/html/config.php
+    sed -i 's/"localhost"/"'${DB_HOST}'"/g' /var/www/html/config.php
+    sed -i 's/""/"'${MARIADB_PASSWORD}'"/g' /var/www/html/config.php
     cat /var/www/html/config.php
 EOF
 
