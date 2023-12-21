@@ -11,9 +11,9 @@ services:
     ports:
       - 8081:8080
     depends_on:
-      - database
+      - db
 
-  database:
+  db:
     build:
       context: .
       dockerfile: ./database/Dockerfile
