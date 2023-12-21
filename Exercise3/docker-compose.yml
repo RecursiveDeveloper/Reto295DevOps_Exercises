@@ -1,0 +1,30 @@
+version: "3.8"
+services:
+  java_api:
+    build:
+      context: .
+      dockerfile: ./api/Dockerfile
+    image: java_api
+    container_name: java_api
+    networks:
+      - app-295-devops-travel
+    ports:
+      - 8081:8080
+    depends_on:
+      - database
+
+  database:
+    build:
+      context: .
+      dockerfile: ./database/Dockerfile
+    image: postgres
+    container_name: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    networks:
+      - app-295-devops-travel
+
+networks:
+  app-295-devops-travel:
+    driver: bridge
