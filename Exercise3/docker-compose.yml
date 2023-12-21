@@ -1,5 +1,18 @@
 version: "3.8"
 services:
+  web:
+    build:
+      context: .
+      dockerfile: ./web/Dockerfile
+    image: web
+    container_name: web
+    networks:
+      - app-295-devops-travel
+    ports:
+      - 5000:80
+    depends_on:
+      - java_api
+
   java_api:
     build:
       context: .
@@ -9,7 +22,7 @@ services:
     networks:
       - app-295-devops-travel
     ports:
-      - 8081:8080
+      - 8080:8080
     depends_on:
       - db
 
