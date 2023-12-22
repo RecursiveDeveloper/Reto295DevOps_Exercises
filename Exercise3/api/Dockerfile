@@ -1,4 +1,4 @@
-FROM maven:3.9.6-amazoncorretto-21-al2023
+FROM amazoncorretto:21-al2023
 
 ARG artifacts_path="./bootcamp-devops-2023/295words-docker/api/target"
 ARG maven_path="/usr/src/mymaven"

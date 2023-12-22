@@ -1,4 +1,4 @@
-FROM postgres:15-alpine
+FROM postgres:9-alpine3.15
 
 ARG artifacts_path="./bootcamp-devops-2023/295words-docker/db"
 
