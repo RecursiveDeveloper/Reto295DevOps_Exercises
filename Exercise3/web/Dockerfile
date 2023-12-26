@@ -9,8 +9,8 @@ COPY "${go_files_path}/." "./"
 RUN go mod init "web" && \
     go mod download
 
-RUN go build -o "/go-devops"
+RUN go build -o "./go-devops"
 
-EXPOSE 5000
+EXPOSE 80/tcp
 
-CMD [ "/go-devops" ]
+CMD [ "./go-devops" ]
