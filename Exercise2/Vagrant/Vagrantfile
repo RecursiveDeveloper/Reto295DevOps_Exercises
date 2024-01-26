@@ -17,5 +17,7 @@ Vagrant.configure("2") do |config|
     cd Reto295DevOps_Exercises
     git pull origin main
     chmod -R +x ./Exercise2
+    cd ./Exercise2/app-295devops-travel
+    ./start_services.sh
   SHELL
 end
