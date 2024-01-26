@@ -1,16 +1,18 @@
 #!/bin/bash
 
-repo_name="bootcamp-devops-2023"
-repo_url="https://github.com/roxsross/bootcamp-devops-2023.git"
-branch="clase2-linux-bash"
-docker_compose_path=$(pwd)
+clone_path=$1
+repo_name=$2
+repo_url=$3
+branch=$4
+owner="vagrant"
 
 if [[ $(whoami) == "root" ]];
 then
+    cd $clone_path
     find $repo_name &> /dev/null
     if [[ $? == 1 ]]; then
         git clone $repo_url
-        chown -R "ubuntu":"ubuntu" $repo_name/
+        chown -R $owner:$owner $repo_name/
     fi
 
     find $repo_name &> /dev/null
@@ -19,7 +21,7 @@ then
         git checkout $branch
         git pull origin $branch
     fi
-    cd $docker_compose_path
+    cd $clone_path
     docker compose up -d --build --force-recreate
 else
     echo "Root user is needed for execution ....."
