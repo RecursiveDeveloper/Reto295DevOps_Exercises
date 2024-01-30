@@ -1,0 +1,55 @@
+version: "3.8"
+services:
+  db:
+    build:
+      context: .
+      dockerfile: ./database/Dockerfile
+    image: postgres
+    container_name: postgres
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    networks:
+      - backend-network
+
+  adminer:
+    image: adminer:4.8.1-standalone
+    restart: always
+    networks:
+      - backend-network
+    ports:
+      - 8085:8080
+
+  api:
+    build:
+      context: .
+      dockerfile: ./api/Dockerfile
+    image: java_api
+    container_name: java_api
+    networks:
+      - backend-network
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+
+  web:
+    build:
+      context: .
+      dockerfile: ./web/Dockerfile
+    image: web
+    container_name: web
+    networks:
+      - frontend-network
+      - backend-network
+    ports:
+      - 5000:80
+    depends_on:
+      - api
+
+networks:
+  backend-network:
+    driver: bridge
+  frontend-network:
+    driver: bridge
