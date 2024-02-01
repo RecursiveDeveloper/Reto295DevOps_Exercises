@@ -1,7 +1,3 @@
-# encoding: utf-8
-# -*- mode: ruby -*-
-# vi: set ft=ruby :
-
 repo_path="/opt/vagrant"
 repo_url="https://github.com/roxsross/bootcamp-devops-2023.git"
 repo_branch="ejercicio3-despliega"
@@ -12,22 +8,24 @@ gitlab_namespace="gitlab"
 
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/jammy64"
-  config.vm.boot_timeout = 400
+  config.vm.boot_timeout = 600
 
   config.vm.synced_folder "./../", "/opt/vagrant"
 
-  config.vm.network "forwarded_port", guest: 80, host: 5000
+  config.vm.network "forwarded_port", guest: 80, host: 8081
+  config.vm.network "forwarded_port", guest: 30100, host: 8082
 
   config.vm.provider "virtualbox" do |vb|
     vb.customize ["modifyvm", :id, "--uart1", "0x3F8", "4"]
     vb.customize ["modifyvm", :id, "--uartmode1", "file", File::NULL]
-    vb.memory = 4096
-    vb.cpus = 3
+    vb.memory = 6500
+    vb.cpus = 5
   end
 
   config.vm.provision "shell", path: "install_additional_tools.sh"
   config.vm.provision "shell", path: "docker_engine.sh"
   config.vm.provision "shell", path: "install_k8s.sh"
+
   config.vm.provision "shell",
     path: "remote_repo_config.sh",
     args: "#{repo_path} #{repo_name} #{repo_url} #{repo_branch}"

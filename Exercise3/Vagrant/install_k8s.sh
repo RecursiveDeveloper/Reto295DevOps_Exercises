@@ -1,6 +1,6 @@
 #!/bin/bash
 
-USER="vagrant"
+OWNER="vagrant"
 
 #---------------------------------------------
 echo -e "\nInstalling kubectl\n"
@@ -22,5 +22,6 @@ echo -e "\nInstalling microk8s\n"
 sudo snap install microk8s --classic
 microk8s status --wait-ready
 
-sudo usermod -a -G microk8s $USER
-sudo chown -f -R $USER ~/.kube
+sudo usermod -a -G microk8s $OWNER
+sudo chown -f -R $OWNER ~/.kube
+sudo newgrp microk8s

@@ -21,7 +21,6 @@ then
         git checkout $branch
         git pull origin $branch
     fi
-    cd $clone_path
 else
     echo "Root user is needed for execution ....."
 fi
