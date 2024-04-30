@@ -1,6 +1,6 @@
 FROM php:8.3.0-apache
 
-ARG static_repo_files_path="./bootcamp-devops-2023/app-295devops-travel"
+ARG static_repo_files_path="./app-config"
 ARG MARIADB_PASSWORD
 ARG DB_HOST
 

@@ -14,15 +14,6 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.provision "shell", path: "docker_engine.sh"
-  config.vm.provision "shell", run: "always", inline: <<-SHELL
-    repo_path="/opt/vagrant/app-295devops-travel"
-    repo_name="bootcamp-devops-2023"
-    repo_url="https://github.com/roxsross/bootcamp-devops-2023.git"
-    branch="clase2-linux-bash"
-
-    apt install dos2unix -y
-    find $repo_path -path "./$repo_name" -prune -type f -print0 | xargs -0 dos2unix
-    chmod -R +x $repo_path
-    bash $repo_path/start_services.sh $repo_path $repo_name $repo_url $branch
-  SHELL
+  config.vm.provision "shell", path: "deploy_app.sh"
+  config.vm.provision "shell", path: "install_ngrok.sh"
 end
