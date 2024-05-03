@@ -1,6 +1,6 @@
 FROM postgres:15-alpine
 
-ARG artifacts_path="./bootcamp-devops-2023/295words-docker/db"
+ARG artifacts_path="./app-config/db"
 
 WORKDIR "/home"
 

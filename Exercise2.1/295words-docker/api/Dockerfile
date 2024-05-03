@@ -1,6 +1,6 @@
 FROM maven:3.9.6-eclipse-temurin-21-alpine AS maven
 
-ARG artifacts_path="./bootcamp-devops-2023/295words-docker/api"
+ARG artifacts_path="./app-config/api"
 ARG maven_path="/usr/src/app"
 
 WORKDIR "${maven_path}"

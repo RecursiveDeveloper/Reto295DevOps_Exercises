@@ -1,6 +1,6 @@
 FROM golang:alpine
 
-ARG go_files_path="./bootcamp-devops-2023/295words-docker/web"
+ARG go_files_path="./app-config/web"
 
 WORKDIR /app
 
